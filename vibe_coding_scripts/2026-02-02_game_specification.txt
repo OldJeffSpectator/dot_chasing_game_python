@@ -1,0 +1,88 @@
+Date: 2026-02-02
+Game Specification: Dot Chasing Game
+
+====================
+ORIGINAL PROMPT:
+====================
+
+i want you to write a python game, (and save this prompt to vibe_coding_scripts with date stamp):
+
+in src\general\position:
+create object Postition, contains x and y, it defines the position of an object
+
+in src\general\items:
+create 3 python objects containing attributes to hold info from pics and movements (you may create an ABC):
+red_dot.py, implement red_dot_pic, and target_chase.py, and has attribute layer = 1, has attribute position, red_dot_spawn.py
+white_arrow.py, implement red_dot_pic, and mouse_chase.py, and has attribute layer = 1, has attribute position, white_arrow_spawn.py
+background.py, implement backgraound_pic, and has attribute layer = 0 (lowest)
+
+in src\media\pics
+create 3 python objects to describ their appearance (you may create an ABC):
+red_dot_pic.py -> a cirle dot of diameter of 15 pixel, having red color body and white color boundary
+white_arrow_pic.py -> an arrow shape object, fits in a 15*13 pixel space
+backgraound_pic.py -> black_background of 1000 * 1600 (height * width)
+
+in src\logic\movement
+create two scripts (you may create an ABC):
+target_chase.py, items having this attribute chase target position (the realtime postion of white_arrow by default), with movement speed param (by default 5 pixels, input from items holding this attribute)
+mouse_chase.py chase reatime position of mouse within game screen, with movement speed param (by default 10 pixels, input from items holding this attribute)
+
+in src\logic\item_spawn:
+red_dot_spawn: when the game loop try to call spawn for red dot, a red dot spawns at randown location (but not within 50 pixel distance with what arrow position)
+white_arrow_spawn: only triggers at beginning of game
+
+in src\general\game_loop:
+for every 1 second, use a fixed 60 frame-rate:
+1. calculate and diplay movement of white arrow, reddot
+2. for every second, spawn 5 red dots
+
+in src\general\menu_page:
+display a START_GAME button, triggers game_loop
+
+in src\logic\control:
+add pause.py: press P to pause game_loop iteration, until press p again
+and end.py: press esc to break game_loop iteration, and returns to menu_page
+
+in src\main.py: start game, and display menu_page
+
+
+====================
+ADDITIONAL FEATURES (2026-02-02):
+====================
+
+i also want the arrow to always face to the position it is moving towards
+
+then for scoring:
+now scores = seconds spend (propotional to number of game-loop iteration) + number of red dot destroyed
+
+in game_loop iteration, adds a collition detection part
+it loops through all collitions, and deal with them
+
+in collition:
+add red_dot_collide_white_arrow.py: if distance between the position of  any red_dot and white_arrow < radius of red_dot, then white error is destroyed, then game ends, and display score at top of mene_page: your previous game score is <score>
+add green_circle_collide_red_dot.py: if distance between the position of  any red_dot and green_circle < radius of green_circle, then those red_dots are destroyed (triggers adding scores)
+
+in control: 
+add bomb.py: by pressing SPACE, spawn an green circular wave from position of white arrow
+
+in src\general\items, src\logic\item_spawn, add conterparts for green_circle
+it spawns at position of white_arrow while bomb event. then after 0.3 seconds (convert this into number of frames) it is destroyed (disappears)
+
+also display realtime scores at top left corner while game_loop iteration
+
+
+====================
+CONFIG MANAGEMENT (2026-02-02):
+====================
+
+now add a config.json file, to manage all magic numbers
+the json structure should fllows the path of files, and name of attributes of those magic numbers
+
+add this config.json to src\config
+
+
+====================
+BOMB COOLDOWN (2026-02-02):
+====================
+
+for the bomb.py, now it has a cooldown of 3 seconds (you may convert it into number of iterations), display its cooldown in terms of second (2 digit precision) at bottom left corner (also add this cooldown to config)

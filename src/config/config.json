@@ -1,0 +1,112 @@
+{
+  "screen": {
+    "width": 1600,
+    "height": 1000
+  },
+  "game": {
+    "fps": 60
+  },
+  "media": {
+    "pics": {
+      "red_dot_pic": {
+        "diameter": 15,
+        "radius": 7.5,
+        "color": [255, 0, 0],
+        "border_color": [255, 255, 255],
+        "border_width": 2
+      },
+      "white_arrow_pic": {
+        "width": 15,
+        "height": 13,
+        "color": [255, 255, 255]
+      },
+      "background_pic": {
+        "color": [0, 0, 0]
+      },
+      "green_circle_pic": {
+        "base_radius": 30,
+        "max_radius": 200,
+        "color": [0, 255, 0],
+        "alpha": 180,
+        "border_width": 3
+      }
+    }
+  },
+  "logic": {
+    "movement": {
+      "target_chase": {},
+      "mouse_chase": {}
+    },
+    "item_spawn": {
+      "red_dot_spawn": {
+        "min_distance_from_arrow": 50.0,
+        "max_spawn_attempts": 100,
+        "margin": 20
+      },
+      "green_circle_spawn": {}
+    },
+    "collision": {
+      "red_dot_collide_white_arrow": {}
+    },
+    "control": {
+      "bomb": {
+        "cooldown_seconds": 3.0
+      }
+    }
+  },
+  "general": {
+    "items": {
+      "red_dot": {
+        "layer": 1,
+        "default_speed": 3.0
+      },
+      "white_arrow": {
+        "layer": 1,
+        "default_speed": 7.0
+      },
+      "background": {
+        "layer": 0
+      },
+      "green_circle": {
+        "layer": 2,
+        "lifetime_seconds": 0.3
+      }
+    },
+    "game_loop": {
+      "red_dot_spawn_per_second": 5
+    },
+    "menu_page": {
+      "menu": {
+        "button_width": 300,
+        "button_height": 80,
+        "bg_color": [20, 20, 40],
+        "button_color": [70, 130, 180],
+        "button_hover_color": [100, 150, 200],
+        "text_color": [255, 255, 255],
+        "score_color": [100, 255, 100],
+        "instruction_color": [180, 180, 180],
+        "title_font_size": 96,
+        "button_font_size": 48,
+        "score_font_size": 48,
+        "instruction_font_size": 32,
+        "small_instruction_font_size": 28,
+        "pause_font_size": 74,
+        "game_over_font_size": 74,
+        "game_over_score_font_size": 48,
+        "game_over_instruction_font_size": 36
+      }
+    },
+    "scoring": {
+      "score_tracker": {
+        "score_font_size": 36,
+        "breakdown_font_size": 28,
+        "score_color": [255, 255, 255],
+        "breakdown_color": [180, 180, 180],
+        "score_position_x": 20,
+        "score_position_y": 20,
+        "line_spacing": 30,
+        "breakdown_line_spacing": 35
+      }
+    }
+  }
+}
